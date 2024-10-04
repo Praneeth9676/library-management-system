@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="validation.js" defer></script>
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div></div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='index.html'>Home</a></li>
+                    <li><a href='books.html'>Books</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'">Login</button></li>
+                    <li><a href='help.html'>Help</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id='login-form' class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
+                    <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+                </div>
+                <!-- Login form -->
+                <form id='login' class='input-group-login' onsubmit="return validateLogin()">
+                    <input type='text' id='login-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='login-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='checkbox' class='check-box'><span>Remember Password</span>
+                    <button type='submit' class='submit-btn'>Log in</button>
+                </form>
+                <!-- Registration form -->
+                <form id='register' class='input-group-register' onsubmit="return validateRegister()">
+                    <input type='text' id='register-firstname' class='input-field' placeholder='First Name' required>
+                    <input type='text' id='register-lastname' class='input-field' placeholder='Last Name' required>
+                    <input type='text' id='register-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='register-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='password' id='register-confirmpassword' class='input-field' placeholder='Confirm Password' required>
+                    <input type='checkbox' id='register-terms' class='check-box'><span>I agree to the terms and conditions</span>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome message section -->
+        <div class="welcome-message">
+            <h1>Welcome to the Library Management System</h1>
+            <p>Your gateway to explore and manage your library resources efficiently.</p>
+            <p>Discover a wide range of books, manage your account, and much more.</p>
+        </div>
+    </div>
+
+    <!-- Script for switching between login and register forms -->
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+
+        function register() {
+            x.style.left = '-400px';
+            y.style.left = '50px';
+            z.style.left = '110px';
+        }
+
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '0px';
+        }
+
+        // Close login form when clicking outside of it
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="validation.js" defer></script>
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div></div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='index.html'>Home</a></li>
+                    <li><a href='books.html'>Books</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'">Login</button></li>
+                    <li><a href='help.html'>Help</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id='login-form' class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
+                    <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+                </div>
+                <!-- Login form -->
+                <form id='login' class='input-group-login' onsubmit="return validateLogin()">
+                    <input type='text' id='login-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='login-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='checkbox' class='check-box'><span>Remember Password</span>
+                    <button type='submit' class='submit-btn'>Log in</button>
+                </form>
+                <!-- Registration form -->
+                <form id='register' class='input-group-register' onsubmit="return validateRegister()">
+                    <input type='text' id='register-firstname' class='input-field' placeholder='First Name' required>
+                    <input type='text' id='register-lastname' class='input-field' placeholder='Last Name' required>
+                    <input type='text' id='register-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='register-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='password' id='register-confirmpassword' class='input-field' placeholder='Confirm Password' required>
+                    <input type='checkbox' id='register-terms' class='check-box'><span>I agree to the terms and conditions</span>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome message section -->
+        <div class="welcome-message">
+            <h1>Welcome to the Library Management System</h1>
+            <p>Your gateway to explore and manage your library resources efficiently.</p>
+            <p>Discover a wide range of books, manage your account, and much more.</p>
+        </div>
+    </div>
+
+    <!-- Script for switching between login and register forms -->
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+
+        function register() {
+            x.style.left = '-400px';
+            y.style.left = '50px';
+            z.style.left = '110px';
+        }
+
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '0px';
+        }
+
+        // Close login form when clicking outside of it
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

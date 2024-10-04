@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System - Books</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="validation.js" defer></script>
+</head>
+<body onload="checkLoginStatus()">
+    <div class="full-page">
+        <div class="navbar">
+            <div></div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='index.html'>Home</a></li>
+                    <li><a href='books.html'>Books</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'">Login</button></li>
+                    <li><a href='help.html'>Help</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="books-page">
+            <h1>Books Collection</h1>
+            <p>Explore our vast collection of books here.</p>
+            <!-- Add book-related content here -->
+        </div>
+
+        <div id='login-form' class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
+                    <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+                </div>
+                <!-- Login form -->
+                <form id='login' class='input-group-login' onsubmit="return validateLogin()">
+                    <input type='text' id='login-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='login-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='checkbox' class='check-box'><span>Remember Password</span>
+                    <button type='submit' class='submit-btn'>Log in</button>
+                </form>
+                <!-- Registration form -->
+                <form id='register' class='input-group-register' onsubmit="return validateRegister()">
+                    <input type='text' id='register-firstname' class='input-field' placeholder='First Name' required>
+                    <input type='text' id='register-lastname' class='input-field' placeholder='Last Name' required>
+                    <input type='text' id='register-email' class='input-field' placeholder='Email Id' required>
+                    <input type='password' id='register-password' class='input-field' placeholder='Enter Password' required>
+                    <input type='password' id='register-confirmpassword' class='input-field' placeholder='Confirm Password' required>
+                    <input type='checkbox' id='register-terms' class='check-box'><span>I agree to the terms and conditions</span>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            // Show login form if user is not logged in
+            function checkLoginStatus() {
+                if (!sessionStorage.getItem('loggedIn')) {
+                    document.getElementById('login-form').style.display = 'block';
+                }
+            }
+
+            // Function to validate login form
+            function validateLogin() {
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                if (email === "" || password === "") {
+                    alert("Both email and password are required for login.");
+                    return false;
+                }
+
+                // Simple email format validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                // Password length validation
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+
+                // Check login details
+                if (email === "library@gmail.com" && password === "library@123") {
+                    alert("Login successful");
+                    sessionStorage.setItem('loggedIn', 'true'); // Store login state in sessionStorage
+                    window.location.href = 'books.html'; // Redirect to Books page after successful login
+                    return true;
+                } else {
+                    alert("Incorrect email or password.");
+                    return false;
+                }
+            }
+
+            // Function to validate registration form
+            function validateRegister() {
+                const firstName = document.getElementById('register-firstname').value;
+                const lastName = document.getElementById('register-lastname').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirmpassword').value;
+                const terms = document.getElementById('register-terms').checked;
+
+                if (firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "") {
+                    alert("All fields are required for registration.");
+                    return false;
+                }
+
+                // Alphabetic characters validation for first and last names
+                const namePattern = /^[A-Za-z\s]+$/;
+                if (!namePattern.test(firstName)) {
+                    alert("First name should contain only letters and spaces.");
+                    return false;
+                }
+                if (!namePattern.test(lastName)) {
+                    alert("Last name should contain only letters and spaces.");
+                    return false;
+                }
+
+                // Simple email format validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                // Password length validation
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+
+                // Confirm password validation
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+
+                // Terms and conditions validation
+                if (!terms) {
+                    alert("You must agree to the terms and conditions.");
+                    return false;
+                }
+
+                alert("Registration successful");
+                return true;
+            }
+
+            // Function to check if the user is logged in
+            function checkLoginStatus() {
+                if (!sessionStorage.getItem('loggedIn')) {
+                    alert("Please log in to access this page.");
+                    window.location.href = 'index.html'; // Redirect to login page if not logged in
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
